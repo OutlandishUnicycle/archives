@@ -21,8 +21,6 @@ router.put('/getArchives', (req, res) => {
     Archive.findAll({
       where: {
         $or: [{takerId: userId}, {giverId: userId}]
-        // takerId: userId,
-        // giverId: userId,
       },
       order: [['createdAt', 'DESC']],
     })
