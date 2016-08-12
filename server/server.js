@@ -3,12 +3,14 @@
 const express =  require('express');
 const bp = require('body-parser');
 const cors = require('cors');
+const morgan = require('morgan');
 
-const routes = require('./routes.js');
+const routes = require('./config/routes.js');
 
 const app = express();
 
 app.use(cors());
+app.use(morgan('dev'));
 app.use(bp.json());
 app.use(bp.urlencoded({ extended: false }));
 
