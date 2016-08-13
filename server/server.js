@@ -20,7 +20,7 @@ app.use('/*', (req, res) => {
   res.send('Archivalicious!');
 });
 
-let port = process.env.port || 4004;
+let port = process.env.PORT || 4004;
 
 task.start();
 
