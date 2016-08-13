@@ -19,9 +19,9 @@ Request body:[
 /api/getArchives
 
 Sample:
-GET request: /api/getArchives
+PUT request: /api/getArchives
 
-e.g. Req.body.userId = 9
+e.g. Req.body.userId = 9 (send body as a single object, e.g.: {userId: 8})
 
 Response: [
  {'id': 34, title': 'something', 'zip': 12345, 'category' : 'something',
