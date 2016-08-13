@@ -6,8 +6,7 @@ const Listing = require('../listing/listingModel.js'); //needed for archive tabl
 var cron = require('node-cron');
 
 
-var Task = cron.schedule('*/1 * * * *', function(){
-  console.log("begin collecting status 2's!", Listing);
+var Task = cron.schedule('* 1 * * *', function(){
    Listing.findAll({
       where: {
         status: 2,

@@ -6,13 +6,6 @@ router.get('/', (req, res) => {
   res.send('Archiving Welcome');
 });
 
-router.get('/evan', (req, res) => {
-  res.send('You filthy swine! How DARE you use unauthorized access routes!! Sod off!')
-})
-router.post('/evan', (req, res) => {
-  res.send('BLARRGHHHH! You filthy swine! How DARE you use unauthorized access routes!! Sod off!')
-})
-
 // will return the archived listings associated with specific userId
 router.put('/getArchives', (req, res) => {
   console.log('into getArchives')
