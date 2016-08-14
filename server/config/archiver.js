@@ -6,7 +6,8 @@ const Listing = require('../listing/listingModel.js'); //needed for archive tabl
 var cron = require('node-cron');
 
 
-var Task = cron.schedule('*/5 * * * *', function(){
+var Task = cron.schedule('* 1 * * *', function(){
+  console.log('Workers archiving!!');
    Listing.findAll({
       where: {
         status: 2,
@@ -44,7 +45,6 @@ var Task = cron.schedule('*/5 * * * *', function(){
     .catch(function(err) {
       return console.log('error archiving.... :(', err)
     })
-  console.log('Workers archiving!!');
 }, true);
 
 
