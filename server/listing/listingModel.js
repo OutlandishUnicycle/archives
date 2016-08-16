@@ -9,7 +9,9 @@ var Listing = db1.define('Listing', {
   category: Sequelize.STRING,
   description: Sequelize.STRING,
   giverId: Sequelize.INTEGER,
-  takerId: Sequelize.INTEGER
+  takerId: Sequelize.INTEGER,
+  takerRating: Sequelize.INTEGER,
+  giverRating: Sequelize.INTEGER
 });
 
 Listing.sync({ force: false });

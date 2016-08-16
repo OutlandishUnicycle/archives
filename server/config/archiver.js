@@ -6,7 +6,7 @@ const Listing = require('../listing/listingModel.js'); //needed for archive tabl
 var cron = require('node-cron');
 
 
-var Task = cron.schedule('* 1 * * *', function(){
+var Task = cron.schedule('*/5 * * * *', function(){
   console.log('Workers archiving!!');
    Listing.findAll({
       where: {
@@ -28,7 +28,9 @@ var Task = cron.schedule('* 1 * * *', function(){
             category: listing.category,
             description: listing.description,
             giverId: listing.giverId,
-            takerId: listing.takerId
+            takerId: listing.takerId,
+            takerRating: listing.takerRating,
+            giverRating: listing.giverRating
           })
         }
       } else {
@@ -36,11 +38,11 @@ var Task = cron.schedule('* 1 * * *', function(){
       }
     })
     .then(() => {
-      // Listing.destroy({
-      //   where: {
-      //     status: 2,
-      //   },
-      // })
+      Listing.destroy({
+        where: {
+          status: 2,
+        },
+      })
       console.log('Moved and not deleted!')
     })
     .catch(function(err) {

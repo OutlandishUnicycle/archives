@@ -9,7 +9,9 @@ var Archive = db.define('Archive', {
   category: Sequelize.STRING,
   description: Sequelize.STRING,
   giverId: Sequelize.INTEGER,
-  takerId: Sequelize.INTEGER
+  takerId: Sequelize.INTEGER,
+  takerRating: Sequelize.INTEGER,
+  giverRating: Sequelize.INTEGER
 });
 
 Archive.sync({ force: false });
