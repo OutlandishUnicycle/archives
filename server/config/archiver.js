@@ -36,11 +36,12 @@ var Task = cron.schedule('* 1 * * *', function(){
       }
     })
     .then(() => {
-      Listing.destroy({
-        where: {
-          status: 2,
-        },
-      })
+      // Listing.destroy({
+      //   where: {
+      //     status: 2,
+      //   },
+      // })
+      console.log('Moved and not deleted!')
     })
     .catch(function(err) {
       return console.log('error archiving.... :(', err)
