@@ -2,19 +2,19 @@ var Sequelize = require('sequelize');
 var db = require('../config/database2.js');
 
 var Archive = db.define('Archive', {
-    title: {type: Sequelize.STRING(30)},
+    title: Sequelize.STRING,
     zipcode: Sequelize.INTEGER,
-    takerId: { type: Sequelize.INTEGER, defaultValue: null },
-    giverId: { type: Sequelize.INTEGER, defaultValue: null },
-    status: { type: Sequelize.INTEGER, allowNull: false, defaultValue: 0 },
+    takerId: Sequelize.INTEGER,
+    giverId:Sequelize.INTEGER,
+    status: Sequelize.INTEGER,
     picReference: Sequelize.STRING,
     category: Sequelize.STRING,
     description: Sequelize.STRING,
     condition: Sequelize.INTEGER,
-    giverRating: { type: Sequelize.INTEGER, allowNull: false, defaultValue: 0 },
-    takerRating: { type: Sequelize.INTEGER, allowNull: false, defaultValue: 0 },
+    giverRating:Sequelize.INTEGER,
+    takerRating: Sequelize.INTEGER,
     stateUSA: Sequelize.STRING,
-    coordinates: { type: Sequelize.STRING, defaultValue: '0, 0' },
+    coordinates: Sequelize.STRING,
 });
 
 Archive.sync({ force: false });
