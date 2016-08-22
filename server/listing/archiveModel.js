@@ -1,7 +1,7 @@
 var Sequelize = require('sequelize'); 
-var db = require('../config/database2.js');
+var db2 = require('../config/database2.js');
 
-var Archive = db.define('Archive', {
+var Archive = db2.define('Archive', {
     title: Sequelize.STRING,
     zipcode: Sequelize.INTEGER,
     takerId: Sequelize.INTEGER,
