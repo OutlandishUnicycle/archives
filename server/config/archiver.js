@@ -21,16 +21,19 @@ var Task = cron.schedule('*/1 * * * *', function(){
           var listing = items[i];
           console.log('ITEM ===============>')
           Archive.create({
-            title: listing.title,
-            zipcode: listing.zipcode,
-            status: listing.status,
-            condition: listing.condition,
-            category: listing.category,
-            description: listing.description,
-            giverId: listing.giverId,
-            takerId: listing.takerId,
-            takerRating: listing.takerRating,
-            giverRating: listing.giverRating
+            title: {type: Sequelize.STRING(30)},
+            zipcode: Sequelize.INTEGER,
+            takerId: { type: Sequelize.INTEGER, defaultValue: null },
+            giverId: { type: Sequelize.INTEGER, defaultValue: null },
+            status: { type: Sequelize.INTEGER, allowNull: false, defaultValue: 0 },
+            picReference: Sequelize.STRING,
+            category: Sequelize.STRING,
+            description: Sequelize.STRING,
+            condition: Sequelize.INTEGER,
+            giverRating: { type: Sequelize.INTEGER, allowNull: false, defaultValue: 0 },
+            takerRating: { type: Sequelize.INTEGER, allowNull: false, defaultValue: 0 },
+            stateUSA: Sequelize.STRING,
+            coordinates: { type: Sequelize.STRING, defaultValue: '0, 0' },
           })
         }
       } else {
