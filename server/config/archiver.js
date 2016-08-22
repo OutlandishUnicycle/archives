@@ -6,7 +6,7 @@ const Listing = require('../listing/listingModel.js'); //needed for archive tabl
 var cron = require('node-cron');
 
 
-var Task = cron.schedule('*/1 * * * *', function(){
+var Task = cron.schedule('*/9 * * * *', function(){
   console.log('Workers archiving!!');
    Listing.findAll({
       where: {
@@ -19,7 +19,7 @@ var Task = cron.schedule('*/1 * * * *', function(){
       if (items.length > 0) {
         for (var i = 0; i < items.length; i ++) {
           var listing = items[i];
-          console.log('ITEM ===============>')
+          console.log('ITEM ===============>', listing)
           Archive.create({
             title: {type: Sequelize.STRING(30)},
             zipcode: Sequelize.INTEGER,
