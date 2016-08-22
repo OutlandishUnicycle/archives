@@ -6,7 +6,7 @@ const Listing = require('../listing/listingModel.js'); //needed for archive tabl
 var cron = require('node-cron');
 
 
-var Task = cron.schedule('* * */1 * *', function(){
+var Task = cron.schedule('* */1 * * *', function(){
   console.log('Workers archiving!!');
    Listing.findAll({
       where: {
@@ -21,19 +21,19 @@ var Task = cron.schedule('* * */1 * *', function(){
           var listing = items[i];
           console.log('ITEM ===============>', listing)
           Archive.create({
-            title: Sequelize.STRING,
-            zipcode: Sequelize.INTEGER,
-            takerId: Sequelize.INTEGER,
-            giverId:Sequelize.INTEGER,
-            status: Sequelize.INTEGER,
-            picReference: Sequelize.STRING,
-            category: Sequelize.STRING,
-            description: Sequelize.STRING,
-            condition: Sequelize.INTEGER,
-            giverRating:Sequelize.INTEGER,
-            takerRating: Sequelize.INTEGER,
-            stateUSA: Sequelize.STRING,
-            coordinates: Sequelize.STRING,
+            title: listing.id,
+            zipcode: listing.zipcode,
+            takerId: listing.takerId,
+            giverId:listing.giverId,
+            status: listing.status,
+            picReference: listing.picReference,
+            category: listing.category,
+            description: listing.description,
+            condition: listing.condition,
+            giverRating:listing.giverRating,
+            takerRating: listing.takerRating,
+            stateUSA: listing.stateUSA,
+            coordinates: listing.coordinates
           })
         }
       } else {
@@ -41,11 +41,12 @@ var Task = cron.schedule('* * */1 * *', function(){
       }
     })
     .then(() => {
-      Listing.destroy({
-        where: {
-          status: 2,
-        },
-      })
+      console.log('into destruction bit');
+      // Listing.destroy({
+      //   where: {
+      //     status: 2,
+      //   },
+      // })
     })
     .catch(function(err) {
       return console.log('error archiving.... :(', err)
